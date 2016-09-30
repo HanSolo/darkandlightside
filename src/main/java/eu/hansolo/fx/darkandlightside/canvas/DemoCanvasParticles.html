@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Demo HTML5 Canvas Particles</title>
+	<script type="text/javascript">  
+		var canvas;
+		var ctx;
+		var WIDTH, HEIGHT, PARTICLE_COUNT, particles, minDist, dist;
+			
+		function init() {
+			canvas        = document.getElementById('canvas');
+			ctx           = canvas.getContext("2d");
+			WIDTH         = 500;//window.innerWidth;
+			HEIGHT        = 500;//window.innerHeight;
+			canvas.width  = WIDTH;
+			canvas.height = HEIGHT;
+
+			PARTICLE_COUNT = 100;
+			particles      = [];
+			minDist        = 70;
+			dist;
+
+			for(var i = 0; i < PARTICLE_COUNT; i++) { particles.push(new Particle()); }
+			
+			animloop();
+		}
+		
+		function Particle() {
+			this.x      = Math.random() * WIDTH;
+			this.y      = Math.random() * HEIGHT;
+			this.vx     = -1 + Math.random() * 2;
+			this.vy     = -1 + Math.random() * 2;
+			this.radius = 4;	
+
+			this.draw = function() {
+				ctx.fillStyle = "white";
+				ctx.beginPath();
+				ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+				ctx.fill();
+			}
+		}
+
+		function draw() {
+			ctx.fillStyle = "black";
+			ctx.fillRect(0, 0, WIDTH, HEIGHT);
+            update();
+            for (var i = 0; i < PARTICLE_COUNT ; i++) { particles[i].draw(); }
+		}
+
+		function update() {
+			for (var i = 0; i < PARTICLE_COUNT ; i++) {
+				p = particles[i];
+				p.x += p.vx;
+				p.y += p.vy;
+			
+				if(p.x + p.radius > WIDTH) {
+					p.x = p.radius;
+				} else if(p.x - p.radius < 0) {
+					p.x = WIDTH - p.radius;
+				}
+		
+				if(p.y + p.radius > HEIGHT) {
+					p.y = p.radius;
+				} else if(p.y - p.radius < 0) {
+					p.y = HEIGHT - p.radius;
+				}
+
+				for(var j = i + 1 ; j < PARTICLE_COUNT ; j++) { distance(p, particles[j]); }
+			}
+		}
+		
+		function distance(p1, p2) {
+			dx = p1.x - p2.x;
+			dy = p1.y - p2.y;
+			var dist = Math.sqrt(dx * dx + dy * dy);
+			if(minDist > dist) {
+                ctx.strokeStyle = "rgba(255,255,255,"+ (1.2 - dist / minDist) +")";
+				ctx.beginPath();
+				ctx.moveTo(p1.x, p1.y);
+				ctx.lineTo(p2.x, p2.y);
+				ctx.stroke();
+				//ctx.closePath();
+
+				var ax = dx / 2000;
+				var ay = dy / 2000;
+				p1.vx -= ax;
+				p1.vy -= ay;
+				p2.vx += ax;
+				p2.vy += ay;
+			}
+		}
+
+		function animloop() {
+			draw();
+			requestAnimFrame(animloop);
+		}
+
+		var requestAnimFrame = (function(){
+  	  	  return  window.requestAnimationFrame       || 
+	  		window.webkitRequestAnimationFrame || 
+			window.mozRequestAnimationFrame    || 
+			window.oRequestAnimationFrame      || 
+			window.msRequestAnimationFrame     ||  
+			function( callback ){
+				window.setTimeout(callback, 1000 / 60);
+			};
+		})();
+	</script>
+</head>
+<body onload="init()" leftmargin="0px" topmargin="0px" marginwidth="0px" marginheight="0px" style="background-color: white;">
+    <canvas id="canvas" width="500" height="500"></canvas>
+</body>
+</html>

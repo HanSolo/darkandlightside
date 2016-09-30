@@ -1,0 +1,201 @@
+.text-field-fx {
+    -fx-text-fill          : -fx-text-inner-color;
+    -fx-highlight-fill     : derive(-fx-control-inner-background,-20%);
+    -fx-highlight-text-fill: -fx-text-inner-color;
+    -fx-prompt-text-fill   : derive(-fx-control-inner-background,-30%);
+    -fx-background-color   : linear-gradient(to bottom, derive(-fx-text-box-border, -10%),
+                                                        -fx-text-box-border),
+                                                        linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%),
+                                                                                                 -fx-control-inner-background);
+    -fx-background-insets  : 0, 1;
+    -fx-background-radius  : 3, 2;
+
+}
+.text-field-fx:no-side-nodes {
+    -fx-padding: 0.333333em 0.583em 0.333333em 0.583em;
+}
+.text-field-fx:left-node-visible {
+    -fx-padding: 0.333333em 0.583em 0.333333em 0;
+}
+.text-field-fx:right-node-visible {
+    -fx-padding: 0.333333em 0 0.333333em 0.583em;
+}
+.text-field-fx:left-node-visible:right-node-visible {
+    -fx-padding: 0.333333em 0 0.333333em 0;
+}
+.text-field-fx:left-node-visible .left-pane {
+    -fx-padding: 0 3 0 3;
+}
+.text-field-fx:right-node-visible .right-pane {
+    -fx-padding: 0 3 0 3;
+}
+.text-field-fx:focused, .text-field-fx:text-field-has-focus {
+    -fx-highlight-fill     : -fx-accent;
+    -fx-highlight-text-fill: white;
+    -fx-background-color   : -fx-focus-color,
+                             -fx-control-inner-background,
+                             -fx-faint-focus-color,
+                             linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
+    -fx-background-insets  : -0.2, 1, -1.4, 3;
+    -fx-background-radius  : 3, 2, 4, 0;
+    -fx-prompt-text-fill   : transparent;
+}
+
+.number-field {
+    -fx-alignment       : center-right;
+    -prompt-text-color  : #555555;
+    -hint-text-color    : #555555;
+    -fx-text-fill       : -fx-text-inner-color;
+    -fx-prompt-text-fill: #555555;
+    -unit-fill          : #555555;
+}
+.number-field:focused {
+    -fx-text-fill          : -fx-text-inner-color;
+    -fx-prompt-text-fill   : #555555;
+    -currency-code-fill    : #555555;
+}
+.number-field .unit {
+    -fx-fill: -unit-fill;
+}
+
+.currency-field {
+    -fx-alignment       : center-right;
+    -prompt-text-color  : #555555;
+    -hint-text-color    : #555555;
+    -fx-text-fill       : -fx-text-inner-color;
+    -fx-prompt-text-fill: #555555;
+    -currency-code-fill : #555555;
+}
+.currency-field:focused {
+    -fx-text-fill       : -fx-text-inner-color;
+    -fx-prompt-text-fill: #555555;
+    -currency-code-fill : #555555;
+}
+.currency-field .currency-code {
+    -fx-fill: -currency-code-fill;
+}
+
+/* TableView */
+.table-cell {
+    -fx-text-fill: -fx-text-background-color;
+    -fx-alignment: center-right; /* Cell text alignment */
+}
+.table-row-cell {
+    -fx-cell-size: 35px; /* Row height */
+}
+.table-row-cell:focused > .cell, .table-row-cell:odd:focused > .cell {
+    -fx-text-fill: black;
+}
+.table-row-cell:focused > .cell:selected-cell, .table-row-cell:odd:focused > .cell:selected-cell {
+    -fx-text-fill: white;
+}
+.table-row-cell:focused > .editable-cell, .table-row-cell:odd:focused > .editable-cell:selected {
+    -fx-text-fill: black;
+}
+
+.table-view .column-header,
+.tree-table-view .column-header,
+.table-view .filler,
+.tree-table-view .filler,
+.table-view > .column-header-background > .show-hide-columns-button,
+.tree-table-view > .column-header-background > .show-hide-columns-button,
+.table-view:constrained-resize .filler,
+.tree-table-view:constrained-resize .filler {
+    -fx-font-weight: normal;
+    -fx-text-fill  : -fx-selection-bar-text;
+}
+
+.table-view .column-header .label,
+.tree-table-view .column-header .label {
+    -fx-text-fill: #555555;
+}
+
+/* Table Cells */
+.check-box-table-cell {
+    -fx-alignment: center;
+    -fx-padding  : 0;
+}
+.check-box-table-cell > .check-box {
+    -fx-font-size: 0.8em;
+    -fx-opacity  : 1;
+    -fx-padding  : 0 0 1 0;
+}
+.check-box-table-cell > .check-box > .box {
+    -fx-background-color : -fx-outer-border, -fx-background;
+    -fx-background-insets: 0,1;
+}
+.check-box-table-cell > .check-box:selected > .box > .mark {
+    -fx-background-color : -fx-text-background-color;
+    -fx-background-insets: 0;
+}
+.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
+.tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
+.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box,
+.tree-table-view:focused > .virtual-flow > .clipped-container > .sheet > .tree-table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box {
+    -fx-background-color: derive(-fx-accent,40%), -fx-background;
+}
+
+/* Custom Label that is used to visualize the selected column */
+.selectable-column-header > .text {
+    -fx-fill: black;
+}
+.selectable-column-header:selected-column-header > .text {
+    -fx-fill: -fx-focus-color;
+}
+
+
+/* Selectable Cell that changes background when selected */
+.selectable-cell {
+    -fx-background-color: transparent;
+}
+.selectable-cell:selected-cell {
+    -fx-text-fill: black;
+}
+
+
+/* Editable Cell that changes background when selected */
+.editable-cell {
+    -fx-background-color: transparent;
+}
+.editable-cell:selected-cell {
+    -fx-background-color: transparent;
+}
+.editable-cell:selected-cell > .text-input, .editable-cell:selected-cell > .text-field {
+}
+.editable-cell:selected-cell > .text-input:focused, .editable-cell:selected-cell > .text-field:focused {
+}
+.editable-cell:selected-cell > .text {
+    -fx-fill: -fx-text-background-color;
+}
+
+
+/* DatePicker Cell that changes background when selected */
+.editable-date-cell {
+    -fx-background-color: transparent;
+}
+.editable-date-cell:selected-cell {
+    -fx-background-color: transparent;
+}
+.editable-date-cell:selected-cell > .text-input, .editable-date-cell:selected-cell > .text-field {
+}
+.editable-date-cell:selected-cell > .text-input:focused, .editable-date-cell:selected-cell > .text-field:focused {
+}
+.editable-date-cell:selected-cell > .text {
+    -fx-fill: -fx-text-background-color;
+}
+
+
+/* DatePicker Cell that changes background when selected */
+.editable-date-time-cell {
+    -fx-background-color: transparent;
+}
+.editable-date-time-cell:selected-cell {
+    -fx-background-color: transparent;
+}
+.editable-date-time-cell:selected-cell > .text-input, .editable-date-cell:selected-cell > .text-field {
+}
+.editable-date-time-cell:selected-cell > .text-input:focused, .editable-date-cell:selected-cell > .text-field:focused {
+}
+.editable-date-time-cell:selected-cell > .text {
+    -fx-fill: -fx-text-background-color;
+}

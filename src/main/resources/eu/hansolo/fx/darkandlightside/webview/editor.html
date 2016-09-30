@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        #editor {
+            font-size  : 16px;
+            font-family: Droid Sans Mono;
+            position   : absolute;
+            top        : 10px;
+            left       : 10px;
+            width      : 620px;
+            height     : 370px;
+        }
+    </style>
+</head>
+<body style="background:white">
+<div id="editor">// Import JavaFX classes
+var Color   = javafx.scene.paint.Color
+var Led     = Packages.eu.hansolo.enzo.led.Led
+var LedType = Packages.eu.hansolo.enzo.led.Led.LedType
+
+// JavaFX Code in JavaScript syntax
+led.ledType  = LedType.ROUND
+led.ledColor = Color.RED
+led.on       = false
+
+</div>
+</body>
+<script type="text/javascript">
+    var editor = ace.edit(document.getElementById("editor"));
+    editor.setTheme("ace/theme/crimson");
+    editor.getSession().setTabSize(2);
+    editor.getSession().setMode("ace/mode/javascript");
+    editor.getSession().on('change', function(e) { window.status = editor.getValue(); });
+</script>
+</html>
