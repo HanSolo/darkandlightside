@@ -13,6 +13,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.Scene;
@@ -85,7 +86,6 @@ public class DemoTableView extends Application {
             new Person("Anakin", "Skywalker", "Jedi Knight"),
             new Person("Padmé", "Amidala", "Politician"),
             new Person("Obi-Wan", "Kenobi", "Jedi Master"),
-            new Person("Angela", "Cacaido", "Java Evangelist"),
             new Person("Count", "Dooku", "Sith Lord"),
             new Person("Kylo", "Ren", "Jedi Trainee")));
         tableView.getColumns().addAll(firstNameColumn, lastNameColumn, infoColumn, dateColumn, incomeColumn, numberColumn);

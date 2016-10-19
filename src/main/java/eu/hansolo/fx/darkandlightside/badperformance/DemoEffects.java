@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eu.hansolo.fx.darkandlightside.scenegraph;
+package eu.hansolo.fx.darkandlightside.badperformance;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;

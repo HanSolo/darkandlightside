@@ -16,7 +16,7 @@
 
 .donut {
     -fx-background-color : red, white;
-    -fx-background-insets: 0%, 25%;
-    /*-fx-background-insets: 0, 25;*/
+    /*-fx-background-insets: 0%, 25%;*/
+    -fx-background-insets: 0, 25;
     -fx-background-radius: 1024px;
 }

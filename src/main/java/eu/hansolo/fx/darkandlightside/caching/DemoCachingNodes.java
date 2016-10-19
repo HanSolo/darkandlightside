@@ -197,7 +197,7 @@ public class DemoCachingNodes extends Application {
             setOpacity((RND.nextDouble() * 0.6) + 0.4);
 
             // Enable Caching
-            setCache(true);
+            //setCache(true);
             setCacheHint(CacheHint.SPEED);
         }
     }

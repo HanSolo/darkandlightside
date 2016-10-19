@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package eu.hansolo.fx.darkandlightside.scenegraph;
+package eu.hansolo.fx.darkandlightside.badperformance;
 
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.CacheHint;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
@@ -53,8 +52,8 @@ public class DemoEffectPerformance extends Application {
             Color  color  = COLORS[RND.nextInt(5)];
             Circle circle = new Circle(x, y, 5, color);
 
-            /***** WRONG APPROACH *****/
-            //circle.setEffect(EFFECT);
+            /***** WRONG APPROACH: ADDING EFFECT TO EACH CIRCLE *****/
+            circle.setEffect(EFFECT);
 
             CIRCLES[i] = circle;
         }
@@ -66,8 +65,8 @@ public class DemoEffectPerformance extends Application {
 
         pane = new Pane(CIRCLES);
 
-        /***** CORRECT APPROACH *****/
-        pane.setEffect(EFFECT);
+        /***** CORRECT APPROACH: ADDING EFFECT TO THE ROOT NODE *****/
+        //pane.setEffect(EFFECT);
     }
 
     @Override public void start(Stage stage) {
