@@ -16,27 +16,18 @@
 
 package eu.hansolo.fx.darkandlightside.tableview;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.WeakInvalidationListener;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.BooleanPropertyBase;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ObjectPropertyBase;
-import javafx.css.PseudoClass;
 import javafx.event.Event;
 import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
 import javafx.util.StringConverter;
 import javafx.util.converter.DefaultStringConverter;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -144,7 +135,6 @@ public class EditableNumberTableCell<S, T> extends TableCellFX<S, T> {
                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             } else {
                 setText(String.format(numberField.getLocale(), new StringBuilder(" %.").append(numberField.getDecimals()).append("f").toString(), numberField.getValue()));
-                //setText(getString());
                 setContentDisplay(ContentDisplay.TEXT_ONLY);
             }
             tablePos = getTableView().getEditingCell();
@@ -220,7 +210,7 @@ public class EditableNumberTableCell<S, T> extends TableCellFX<S, T> {
             if (numberField.isFocused()) {
                 selectedCell.set(true);
             } else {
-                commitEdit(getConverter().fromString(getString()));
+                commitEdit(getConverter().fromString(numberField.getText()));
                 selectedCell.set(false);
             }
         });

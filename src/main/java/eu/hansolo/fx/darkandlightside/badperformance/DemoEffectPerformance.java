@@ -53,7 +53,7 @@ public class DemoEffectPerformance extends Application {
             Circle circle = new Circle(x, y, 5, color);
 
             /***** WRONG APPROACH: ADDING EFFECT TO EACH CIRCLE *****/
-            circle.setEffect(EFFECT);
+            //circle.setEffect(EFFECT);
 
             CIRCLES[i] = circle;
         }
@@ -66,7 +66,7 @@ public class DemoEffectPerformance extends Application {
         pane = new Pane(CIRCLES);
 
         /***** CORRECT APPROACH: ADDING EFFECT TO THE ROOT NODE *****/
-        //pane.setEffect(EFFECT);
+        pane.setEffect(EFFECT);
     }
 
     @Override public void start(Stage stage) {

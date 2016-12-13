@@ -335,9 +335,9 @@ public class DemoCalculator extends Application {
     // ******************** Public Methods ************************************
     @Override public void start(Stage stage) {
         Scene scene = new Scene(createLayout());
-        //scene.getStylesheets().add(DemoCalculator.class.getResource("calculator.css").toExternalForm());
-        //scene.getStylesheets().add(DemoCalculator.class.getResource("calculator-alternative.css").toExternalForm());
-        //scene.getStylesheets().add(DemoCalculator.class.getResource("calculator-braun.css").toExternalForm());
+        scene.getStylesheets().add(DemoCalculator.class.getResource("calculator.css").toExternalForm());
+        scene.getStylesheets().add(DemoCalculator.class.getResource("calculator-alternative.css").toExternalForm());
+        scene.getStylesheets().add(DemoCalculator.class.getResource("calculator-braun.css").toExternalForm());
 
         stage.setScene(scene);
         stage.setTitle("Demo Powerful CSS");

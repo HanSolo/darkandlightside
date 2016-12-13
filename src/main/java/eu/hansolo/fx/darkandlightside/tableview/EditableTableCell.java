@@ -1,19 +1,11 @@
 package eu.hansolo.fx.darkandlightside.tableview;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.WeakInvalidationListener;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.BooleanPropertyBase;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ObjectPropertyBase;
-import javafx.css.PseudoClass;
 import javafx.event.Event;
 import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -82,6 +74,9 @@ public class EditableTableCell<S, T> extends TableCellFX<S, T> {
             tableView.edit(-1, null);
             //tableView.requestFocus();
         }
+
+        // Reset CellField Text
+        CellField.setText("");
     }
 
     @Override public void cancelEdit() {
@@ -102,9 +97,7 @@ public class EditableTableCell<S, T> extends TableCellFX<S, T> {
             setGraphic(null);
         } else {
             if (isEditing()) {
-                if (textField != null) {
-                    textField.setText(getString());
-                }
+                if (textField != null) { textField.setText(getString()); }
                 setGraphic(textField);
                 setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
             } else {
@@ -184,7 +177,7 @@ public class EditableTableCell<S, T> extends TableCellFX<S, T> {
             if (textField.isFocused()) {
                 selectedCell.set(true);
             } else {
-                commitEdit(getConverter().fromString(getString()));
+                commitEdit(getConverter().fromString(textField.getText()));
                 selectedCell.set(false);
             }
         });

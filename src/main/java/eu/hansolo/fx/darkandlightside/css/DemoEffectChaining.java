@@ -22,6 +22,9 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
@@ -38,7 +41,7 @@ public class DemoEffectChaining extends Application {
 
     @Override public void init() {
         circle = new Circle(100);
-        circle.getStyleClass().add("circle");
+        //circle.getStyleClass().add("circle");
 
         InnerShadow innerShadow = new InnerShadow(BlurType.TWO_PASS_BOX, Color.WHITE, 30, 0.0, 0, 5);
         DropShadow  dropShadow  = new DropShadow(BlurType.TWO_PASS_BOX, Color.BLACK, 10, 0.0, 0, 10);

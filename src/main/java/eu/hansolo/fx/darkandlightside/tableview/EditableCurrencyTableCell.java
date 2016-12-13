@@ -202,7 +202,8 @@ public class EditableCurrencyTableCell<S, T> extends TableCellFX<S, T> {
             if (currencyField.isFocused()) {
                 selectedCell.set(true);
             } else {
-                commitEdit(getConverter().fromString(getString()));
+                //commitEdit(getConverter().fromString(getString()));
+                commitEdit(getConverter().fromString(currencyField.getText()));
                 selectedCell.set(false);
             }
         });
